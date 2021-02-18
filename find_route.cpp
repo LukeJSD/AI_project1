@@ -231,16 +231,16 @@ void output_answers2(node2* nd2, vector<vector<int>> connections, vector<string>
     stack<int> path = node_2_stack(nd2, stack<int>());
 
     if (nd2 == nullptr) {
-        cout << "distance: infinity\nroute:\nnone";
+        cout << "distance: infinity\nroute:\nnone\n";
     } else if (nd2->get_parent() == nullptr) {
-        cout << "distance: 0 km\nroute:\n" << cities[nd2->get_n()] << " to " << cities[nd2->get_n()] << ", 0 km";
+        cout << "distance: 0 km\nroute:\n" << cities[nd2->get_n()] << " to " << cities[nd2->get_n()] << ", 0 km\n";
     } else {
-        cout << "distance: " << nd2->get_path_cost() <<  "km\nroute:";
+        cout << "distance: " << nd2->get_path_cost() <<  "km\nroute:\n";
         int prev = path.top();
         path.pop();
         while (!path.empty()) {
-            cout << endl << cities[prev] << " to " << cities[path.top()];
-            cout << ", " << connections[prev][path.top()] << " km";
+            cout << cities[prev] << " to " << cities[path.top()];
+            cout << ", " << connections[prev][path.top()] << " km\n";
             prev = path.top();
             path.pop();
         }
