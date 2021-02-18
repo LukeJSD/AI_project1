@@ -1,0 +1,39 @@
+/*map<string, node> make_connections(ifstream &in) {
+    map<string, node> ret_map;
+    set<string> initialized_cities;
+    while (!in.eof()) {
+        string line;
+        getline(in, line);
+        if (line == "END OF INPUT") break;
+
+        stringstream ss(line);
+        string city1, city2; int dist;
+        ss >> city1 >> city2 >> dist;
+
+        node* nd_ptr1;
+        node* nd_ptr2;
+        node nd1;
+        node nd2;
+        if (initialized_cities.count(city1) < 1) {
+            nd1 = node(city1);
+            nd_ptr1 = &nd1;
+            ret_map[city1] = *nd_ptr1;
+            initialized_cities.insert(city1);
+        } else {
+            nd_ptr1 = &ret_map[city1];
+        }
+        if (initialized_cities.count(city2) < 1) {
+            nd2 = node(city2);
+            nd_ptr2 = &nd2;
+            ret_map[city2] = *nd_ptr2;
+            initialized_cities.insert(city2);
+        } else {
+            nd_ptr2 = &ret_map[city2];
+        }
+
+        ret_map[city1].add_neighbor(city2, nd_ptr2, dist);
+        ret_map[city2].add_neighbor(city1, nd_ptr1, dist);
+    }
+    in.close();
+    return ret_map;
+}*/
