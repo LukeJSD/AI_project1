@@ -261,7 +261,7 @@ int UCS2(int start, const int destination, vector<vector<int>> connections, vect
     vector<bool> vec(connections.size(), false);
     if (!preprocessing_dfs(start, connections, vec)[destination]) {
         output_answers2(nullptr, connections, cities);
-        return INT64_MAX;
+        return INT16_MAX;
     }
 
     priority_queue<node2*, vector<node2*>, node_cmp> line;
@@ -274,7 +274,7 @@ int UCS2(int start, const int destination, vector<vector<int>> connections, vect
 
         if (current->get_path_cost() > DIAMETER) {
             output_answers2(nullptr, connections, cities);
-            return INT64_MAX;
+            return INT16_MAX;
         }
 
         if (current->get_n() == destination) {
@@ -292,5 +292,5 @@ int UCS2(int start, const int destination, vector<vector<int>> connections, vect
     }
 
     output_answers2(nullptr, connections, cities);
-    return INT64_MAX;
+    return INT16_MAX;
 }
