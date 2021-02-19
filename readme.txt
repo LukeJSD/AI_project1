@@ -9,5 +9,8 @@ maps to represent connections and cities. Paths were updated not by storing a co
 its parent.  The depth first search algorithm was used in pre-processing to check if there was no path from the start to
 the destination.  If there is indeed a path from start state to goal state, then the uninformed cost algorithm was used
 to find to optimal path.
-5. In linux, run the command "g++ -o find_route find_route.cpp" to compile. Run the command "./find_route INPUT_FILE
-START_CITY END_CITY" to find the optimal route from START_CITY to END_CITY from the input file INPUT_FILE.
+functions were defined before main if they were used in main.  All function code is found after main.  These are in the
+order they are used in main.
+5. Firstly, input files should placed in the same directory as find_route.cpp. In linux, run the command "g++ -o
+find_route find_route.cpp" to compile. Run the command "./find_route INPUT_FILE START_CITY END_CITY" to find the optimal
+route from START_CITY to END_CITY from the input file INPUT_FILE.

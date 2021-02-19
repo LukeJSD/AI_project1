@@ -1,53 +1,38 @@
 //
-// Created by luke on 2/16/2021.
+// Created by luke on 2/17/2021.
 //
 
 #ifndef PP1_NODE_H
 #define PP1_NODE_H
 
-#include <map>
-#include <set>
-#include <string>
-
-using namespace std;
 
 class node {
+int n;  // state/city number
+node* parent;   // pointer to the parent node
 public:
-    node() {
-        this->city = "NONE";
-    }
-    node(string name) {
-        this->city = name;
-    }
-    void add_neighbor(string c, node* n, int d) {
-        this->neighbors[c] = pair<int, node*>(d, n);
-    }
-    string get_city() {
-        return this->city;
-    }
-    int get_distance(string c) {
-        return this->neighbors[c].first;
-    }
-    node* get_neighbor(string c) {
-        return this->neighbors[c].second;
-    }
-    set<string> get_neighbors() {
-        set<string> ret_set;
-        for (map<string, pair<int, node*>>::iterator it = this->neighbors.begin(); it != this->neighbors.end(); ++it) {
-            ret_set.insert(it->first);
-        }
-        return ret_set;
-    }
+    int path_cost;  // cost of the path through this node (public for the node_cmp struct)
 
-    node& operator=(const node& nd) {
-        if (this == &nd) return *this;
-        this->city = nd.city;
-        this->neighbors = nd.neighbors;
-        return *this;
+    node(int n, int pc = 0, node* n2 = nullptr) {
+        this->n = n;
+        this->path_cost = pc;
+        this->parent = n2;
     }
-private:
-    string city;
-    map<string, pair<int, node*>> neighbors;
+    int get_n() {
+        return this->n;
+    }
+    int get_path_cost() {
+        return this->path_cost;
+    }
+    node* get_parent() {
+        return this->parent;
+    }
+};
+
+// this is used so the priority queue sorts correctly; idea from stackoverflow
+struct node_cmp {
+    bool operator()(const node* a, const node* b) {
+        return a->path_cost > b->path_cost;
+    }
 };
 
 
